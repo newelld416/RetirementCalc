@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'test',
+  selector: 'title',
   directives: [],
   pipes: [],
   styles: [require('./style.scss')],
   template: require('./template.html')
 })
 
-export class Test {
+export class Title {
 
   constructor() {
     // Do stuff

@@ -1,17 +1,15 @@
 import {Component} from '@angular/core';
-
-import {Calculator} from '../../components/calculator';
-import {Title} from '../../components/title';
+import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
 
 @Component({
-  selector: 'home',
-  directives: [Calculator, Title],
+  selector: 'calculator',
+  directives: [DatePicker],
   pipes: [],
   styles: [require('./style.scss')],
   template: require('./template.html')
 })
 
-export class Home {
+export class Calculator {
 
   constructor() {
     // Do stuff

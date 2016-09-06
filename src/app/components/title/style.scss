@@ -1,0 +1,15 @@
+@import '../../style.scss';
+
+.outer-container {
+    .title {
+        background: green;
+        border: 2px solid green;
+        border-radius: 20px;
+        box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.5);
+        color: white;
+        width: 30%;
+        min-width: 700px;
+        margin: 20px auto 20px auto;
+        padding: 20px;
+    }
+}
