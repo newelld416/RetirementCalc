@@ -1,17 +1,31 @@
 import {Component} from '@angular/core';
-import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
 
 @Component({
   selector: 'calculator',
-  directives: [DatePicker],
+  directives: [],
   pipes: [],
   styles: [require('./style.scss')],
   template: require('./template.html')
 })
 
 export class Calculator {
+    private hasPensionBenefits: boolean;
+    private hasSocialSecurityBenefits: boolean;
 
-  constructor() {
-    // Do stuff
-  }
+    constructor() {
+        this.hasPensionBenefits = false;
+        this.hasSocialSecurityBenefits = false;
+    }
+
+    testChange(event, value){
+        debugger;
+    }
+
+    togglePensionBenefits(value) {
+        this.hasPensionBenefits = value;
+    }
+
+    toggleSocialSecutiryBenefits(value) {
+        this.hasSocialSecurityBenefits = value;
+    }
 }
