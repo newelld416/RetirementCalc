@@ -12,9 +12,12 @@ export class Calculator {
     private hasPensionBenefits: boolean;
     private hasSocialSecurityBenefits: boolean;
 
+    private currentStep: number;
+
     constructor() {
         this.hasPensionBenefits = false;
         this.hasSocialSecurityBenefits = false;
+        this.currentStep = 1;
     }
 
     testChange(event, value){
@@ -27,5 +30,10 @@ export class Calculator {
 
     toggleSocialSecutiryBenefits(value) {
         this.hasSocialSecurityBenefits = value;
+    }
+
+    updateCurrentStep(step) {
+        this.currentStep = step;
+        return false;
     }
 }
