@@ -1,9 +1,27 @@
 @import '../../style.scss';
 
 .outer-container {
-    width: 30%;
-    min-width: 700px;
+    max-width: 700px;
     margin: auto;
+
+    .calculator-box {
+        border: 2px solid #3074AF;
+        box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.5);
+        border-radius: 20px;
+        padding-top: 20px;
+        background-color: white;
+
+        .terms-and-conditions {
+            text-align: left;
+            padding: 0px 20px 20px 20px;
+        }
+    }
+}
+
+.outer-container-left {
+    width: 44%;
+    margin-left: 5%;
+    margin-top: 15px;
     .calculator-box {
         border: 2px solid #3074AF;
         box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.5);
@@ -15,10 +33,6 @@
             margin: 10px auto 10px auto;
             padding: 10px;
             width: 90%;
-        }
-
-        .range-style {
-
         }
 
         .info-icon {
@@ -124,4 +138,23 @@
 }
 .tooltip-element:hover .tooltip-text {
     visibility: visible;
+}
+
+.outer-container-right {
+    width: 44%;
+    margin-right: 5%;
+    float: right;
+    position: fixed;
+    right: 15px;
+    top: 80px;
+    
+
+    .calculator-box {
+        border: 2px solid #3074AF;
+        box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.5);
+        border-radius: 20px;
+        padding-top: 20px;
+        background-color: white;
+        height: 400px;
+    }
 }

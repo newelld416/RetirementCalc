@@ -3,24 +3,36 @@
         <form class="form-horizontal calculator-box">
             <fieldset>
                 <legend>Terms and Conditions</legend>
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h4>
+                <div class="terms-and-conditions">
+                    <h3>Website usage terms and conditions – sample template</h3>
+                    <p>Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern [business name]’s relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.</p>
+                    <p>The use of this website is subject to the following terms of use:</p>
+                    <ul>
+                        <li>The content of the pages of this website is for your general information and use only. It is subject to change without notice<li>
+                        <li>This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties: [insert list of information]</li>
+                        <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law</li>
+                    </ul>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Lets Get Started</legend>
-                <button class="btn btn-primary" (click)="updateCurrentStep(2)" style="margin-bottom: 20px;">Next</button>
+                <button class="btn btn-primary" (click)="updateCurrentStep(2)" style="margin-bottom: 20px;">Continue</button>
             </fieldset>
         </form>
     </div>
+</div>
+
+<div class="outer-container-left">
     <div *ngIf="currentStep == 2">
         <form class="form-horizontal calculator-box">
             <fieldset>
                 <legend>Personal Information</legend>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="name">Name:
+                    <label class="tooltip-element control-label col-sm-4" for="name">Full Name:
                         <span class="tooltip-text">Please enter your full name</span>
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" id="name" placeholder="First and Last Name (Mary Jane)">
+                        <input type="text" class="form-control" id="name" placeholder="First and Last Name (Mary Jane)" (keyup)="updateInput('name', nameInput.value)" #nameInput>
                     </div>
                 </div>
                 <div class="form-group">
@@ -28,7 +40,7 @@
                         <span class="tooltip-text">Please enter a valid email</span>
                     </label>
                     <div class="col-sm-7">
-                        <input type="email" class="form-control" id="email" placeholder="Email Address">
+                        <input type="email" class="form-control" id="email" placeholder="Email Address" (keyup)="updateInput('email', emailInput.value)" #emailInput>
                     </div>
                 </div>
                 <div class="form-group">
@@ -36,14 +48,14 @@
                         <span class="tooltip-text">Please enter your birthdate</span>
                     </label>
                     <div class="col-sm-7">
-                        <input type="date" class="form-control" id="birthdate" placeholder="mm/dd/yyyy">
+                        <input type="date" class="form-control" id="birthdate" placeholder="mm/dd/yyyy" (blur)="updateInput('birthday', birthdayInput.value)" #birthdayInput>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Finances</legend>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Current Annual Salary:
+                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Annual Income:
                         <span class="tooltip-text">Please enter youd current annual salary</span>
                     </label>
                     <div class="col-sm-7">
@@ -51,7 +63,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Current Retirement Savings:
+                    <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Retirement Savings:
                         <span class="tooltip-text">Please enter you current retirement savings</span>
                     </label>
                     <div class="col-sm-7">
@@ -59,7 +71,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="otherIncome">Other Retirement Income:
+                    <label class="tooltip-element control-label col-sm-4" for="otherIncome">Retirement Income:
                         <span class="tooltip-text">Please enter any other retirement income you may have</span>
                     </label>
                     <div class="col-sm-7">
@@ -67,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="replacementRate">Desired replacement Rate:
+                    <label class="tooltip-element control-label col-sm-4" for="replacementRate">Replacement Rate:
                         <span class="tooltip-text">Please enter you desired replacement rate</span>
                     </label>
                     <div class="col-sm-7">
@@ -108,8 +120,8 @@
             <fieldset>
                 <legend>Social Security Benefits</legend>
                 <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Estimate Social Security Benefits
-                        <span class="tooltip-text">Estimate you social security benefits</span>
+                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Social Security Benefits?
+                        <span class="tooltip-text">Social Security Benefits?</span>
                     </label>
                     <label class="switch">
                         <input type="checkbox" (change)="toggleSocialSecutiryBenefits(socialSecurityBenefits.checked)" #socialSecurityBenefits>
@@ -128,7 +140,7 @@
                     </label>
                     <div class="col-sm-7">
                         {{yearsOfRetirement.value}}
-                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="30" (change)="testChange($event, yearsOfRetirement.value)" #yearsOfRetirement>
+                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="30" (change)="updateSlider()" #yearsOfRetirement>
                     </div>
                 </div>
                 <div class="form-group">
@@ -136,20 +148,31 @@
                         <span class="tooltip-text">What is your desired annual salary growth after retirement</span>
                     </label>
                     <div class="col-sm-7">
-                        {{annualSalaryGrowth.value}}
-                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="30" (change)="testChange($event, annualSalaryGrowth.value)" #annualSalaryGrowth>
+                        {{annualSalaryGrowth.value}}%
+                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="25" (change)="updateSlider()" #annualSalaryGrowth>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Finish Up</legend>
-                <div class="submit-button">
-                    <button class="btn btn-primary" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Previous</button>
-                    <button class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Next</button>
                 </div>
             </fieldset>
         </form>
     </div>
+</div> 
+
+<div class="outer-container-right">
+    <div *ngIf="currentStep == 2">
+        <form class="form-horizontal calculator-box">
+            <fieldset>
+                <legend>Retirement Calculation Results</legend>
+                <div>Given the options you specified, when you retire at age 67 in 2061, you will be able to replace 80% of your final wages. As part of this income you would receive $3,307.70 per month in Social Security benefits.</div>
+                <div class="submit-button">
+                    <button class="btn btn-primary" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Go Back</button>
+                    <button class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="outer-container">
     <div *ngIf="currentStep == 3">
         <form class="form-horizontal calculator-box">
             <div>You are all done</div>
@@ -161,4 +184,4 @@
             </fieldset>
         </form>
     </div>
-</div>  
+</div>

@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 
+import {BrowserStorage} from '../../services/browserstorage';
+
 @Component({
   selector: 'calculator',
   directives: [],
@@ -14,17 +16,34 @@ export class Calculator {
 
     private currentStep: number;
 
+    name: string;
+    email: string;
+    birthday: any;
+
     constructor() {
         this.hasPensionBenefits = false;
         this.hasSocialSecurityBenefits = false;
-        this.currentStep = 1;
+        this.currentStep =  BrowserStorage.getData("currentStep") || 1;
     }
 
-    testChange(event, value){
+    updateInput(propertyName, propertyValue){
+        if (propertyName === 'name') {
+            this.name = propertyValue;
+        } else if (propertyName === 'email') {
+            this.email = propertyValue;
+        } else if (propertyName === 'birthday') {
+            this.birthday = propertyValue;
+        }
         debugger;
     }
 
+    updateSlider() {
+
+    }
+
     togglePensionBenefits(value) {
+        let test = this.name;
+        debugger;
         this.hasPensionBenefits = value;
     }
 
@@ -34,6 +53,16 @@ export class Calculator {
 
     updateCurrentStep(step) {
         this.currentStep = step;
+        BrowserStorage.setData("currentStep", this.currentStep, false);
         return false;
+    }
+
+    resetClicked() {
+        this.hasPensionBenefits = false;
+        this.hasSocialSecurityBenefits = false;
+    }
+
+    emailResults() {
+
     }
 }
