@@ -20,7 +20,7 @@ import {
     '[style.height]': 'height'
   }
 })
-export class Collapse {
+export class Collapse { 
   public test:any = 'wtf';
   // style
   private height:string;

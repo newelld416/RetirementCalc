@@ -42,11 +42,11 @@ export class Calculator {
     paycheckSavingsValue: number;
 
     isPersonalInfoCollapsed: boolean = false;
-    isFinancesCollapsed: boolean = false;
-    isPensionCollapsed: boolean = false;
-    isSocialSecurityCollapsed: boolean = false;
-    is401kCollapsed: boolean = false;
-    isRetirementCriteriaCollapsed: boolean = false;
+    isFinancesCollapsed: boolean = true;
+    isPensionCollapsed: boolean = true;
+    isSocialSecurityCollapsed: boolean = true;
+    is401kCollapsed: boolean = true;
+    isRetirementCriteriaCollapsed: boolean = true;
 
     constructor() {
         this.hasPensionBenefits = false;
@@ -109,6 +109,10 @@ export class Calculator {
         this.replacementRate = value;
     }
 
+    updateReplacementRateChange() { 
+        this.isPensionCollapsed = false;
+    }
+
     updateRetirementIncome(value) {
         this.retirementIncome = value;
     }
@@ -153,5 +157,6 @@ export class Calculator {
         this.age = Utilities.getAge(birthDate);
         this.yearsUntilRetirement = this.ageOfRetirementValue - this.age; 
         this.totalIncome = this.income * this.yearsUntilRetirement;
+        this.isFinancesCollapsed = false;
     }
 }
