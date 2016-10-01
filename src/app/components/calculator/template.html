@@ -2,20 +2,20 @@
     <div *ngIf="currentStep == 1">
         <form class="form-horizontal calculator-box">
             <fieldset>
-                <legend>Terms and Conditions</legend>
+                <legend class="header-legend">Terms and Conditions</legend>
                 <div class="terms-and-conditions">
                     <h3>Website usage terms and conditions – sample template</h3>
                     <p>Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern [business name]’s relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.</p>
                     <p>The use of this website is subject to the following terms of use:</p>
                     <ul>
-                        <li>The content of the pages of this website is for your general information and use only. It is subject to change without notice<li>
+                        <li>The content of the pages of this website is for your general information and use only. It is subject to change without notice</li>
                         <li>This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties: [insert list of information]</li>
                         <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law</li>
                     </ul>
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Lets Get Started</legend>
+                <legend class="header-legend">Lets Get Started</legend>
                 <button class="btn btn-primary" (click)="updateCurrentStep(2)" style="margin-bottom: 20px;">Continue</button>
             </fieldset>
         </form>
@@ -26,131 +26,189 @@
     <div *ngIf="currentStep == 2">
         <form class="form-horizontal calculator-box">
             <fieldset>
-                <legend>Personal Information</legend>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="name">Full Name:
-                        <span class="tooltip-text">Please enter your full name</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" id="name" placeholder="First and Last Name (Mary Jane)" (keyup)="updateInput('name', nameInput.value)" #nameInput>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="email">Email:
-                        <span class="tooltip-text">Please enter a valid email</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="email" class="form-control" id="email" placeholder="Email Address" (keyup)="updateInput('email', emailInput.value)" #emailInput>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="email">Birthdate:
-                        <span class="tooltip-text">Please enter your birthdate</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="date" class="form-control" id="birthdate" placeholder="mm/dd/yyyy" (blur)="updateInput('birthday', birthdayInput.value)" #birthdayInput>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Finances</legend>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Annual Income:
-                        <span class="tooltip-text">Please enter youd current annual salary</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="number" class="form-control" id="annualSalary" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Retirement Savings:
-                        <span class="tooltip-text">Please enter you current retirement savings</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="number" class="form-control" id="retirementSavings" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="otherIncome">Retirement Income:
-                        <span class="tooltip-text">Please enter any other retirement income you may have</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="number" class="form-control" id="otherIncome" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="replacementRate">Replacement Rate:
-                        <span class="tooltip-text">Please enter you desired replacement rate</span>
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="number" class="form-control" id="replacementRate" placeholder="0">
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Pension</legend>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Pension Benefits?
-                        <span class="tooltip-text">Do you recieve an pension benefits</span>
-                    </label>
-                    <label class="switch">
-                        <input type="checkbox" (change)="togglePensionBenefits(pensionBenefits.checked)" #pensionBenefits>
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-                <div *ngIf="hasPensionBenefits">
+                <legend class="header-legend arrow-down" (click)="isPersonalInfoCollapsed = !isPersonalInfoCollapsed">Personal Information</legend>
+                <div [collapse]="isPersonalInfoCollapsed">
                     <div class="form-group">
-                        <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Age Benefits Start:
-                            <span class="tooltip-text">What age do you pension benefits begin</span>
+                        <label class="tooltip-element control-label col-sm-4" for="name">Full Name:
+                            <span class="tooltip-text">Please enter your full name</span>
                         </label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="retirementSavings" placeholder="0">
+                            <input type="text" class="form-control" id="name" placeholder="First and Last Name (Mary Jane)" (keyup)="updateUserDetails('name', nameInput.value)" #nameInput>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="tooltip-element control-label col-sm-4" for="otherIncome">Annual Pension:
-                            <span class="tooltip-text">How much do you recieve annually from your pension</span>
+                        <label class="tooltip-element control-label col-sm-4" for="email">Email:
+                            <span class="tooltip-text">Please enter a valid email</span>
                         </label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="otherIncome" placeholder="0">
+                            <input type="email" class="form-control" id="email" placeholder="Email Address" (keyup)="updateUserDetails('email', emailInput.value)" #emailInput>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="email">Birthdate:
+                            <span class="tooltip-text">Please enter your birthdate</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="date" class="form-control" id="birthdate" placeholder="mm/dd/yyyy" (blur)="updateUserDetails('birthday', birthdayInput.value)" #birthdayInput>
                         </div>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Social Security Benefits</legend>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="annualSalary">Social Security Benefits?
-                        <span class="tooltip-text">Social Security Benefits?</span>
-                    </label>
-                    <label class="switch">
-                        <input type="checkbox" (change)="toggleSocialSecutiryBenefits(socialSecurityBenefits.checked)" #socialSecurityBenefits>
-                        <div class="slider round"></div>
-                    </label>
+                <legend class="header-legend" (click)="isFinancesCollapsed = !isFinancesCollapsed">Finances</legend>
+                <div [collapse]="isFinancesCollapsed">
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="annualSalary">Annual Income:
+                            <span class="tooltip-text">Please enter youd current annual salary</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="annualSalary" value="48000" (keyup)="updateIncome($event.target.value)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Retirement Savings:
+                            <span class="tooltip-text">Please enter you current retirement savings</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="retirementSavings" value="0" (keyup)="updateCurrentRetirementSavings($event.target.value)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="otherIncome">Retirement Income:
+                            <span class="tooltip-text">Please enter any other retirement income you may have</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="otherIncome" value="0" (keyup)="updateRetirementIncome($event.target.value)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="replacementRate">Replacement Rate:
+                            <span class="tooltip-text">Please enter you desired replacement rate</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="replacementRate" placeholder="0" max="100" (keyup)="updateReplacementRate($event.target.value)">
+                        </div>
+                    </div>
                 </div>
-                <div *ngIf="hasSocialSecurityBenefits">
-                </div>
-
             </fieldset>
             <fieldset>
-                <legend>Retirement Criteria</legend>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="testRange">Years of Retirement: 
-                        <span class="tooltip-text">How many years would you like to spend retired</span>
-                    </label>
-                    <div class="col-sm-7">
-                        {{yearsOfRetirement.value}}
-                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="30" (change)="updateSlider()" #yearsOfRetirement>
+                <legend class="header-legend" (click)="isPensionCollapsed = !isPensionCollapsed">Pension</legend>
+                <div [collapse]="isPensionCollapsed">
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="annualSalary">Pension Benefits?
+                            <span class="tooltip-text">Do you recieve an pension benefits</span>
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" (change)="togglePensionBenefits(pensionBenefits.checked)" #pensionBenefits>
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                    <div *ngIf="hasPensionBenefits">
+                        <div class="form-group">
+                            <label class="tooltip-element control-label col-sm-4" for="retirementSavings">Age Benefits Start:
+                                <span class="tooltip-text">What age do you pension benefits begin</span>
+                            </label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" id="retirementSavings" placeholder="0" (keyup)="updateAgePensionStarts($event.target.value)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="tooltip-element control-label col-sm-4" for="otherIncome">Annual Pension:
+                                <span class="tooltip-text">How much do you recieve annually from your pension</span>
+                            </label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" id="otherIncome" placeholder="0" (keyup)="updateAnnualPensionIncome($event.target.value)">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="tooltip-element control-label col-sm-4" for="testRange">Annual Salary Growth: 
-                        <span class="tooltip-text">What is your desired annual salary growth after retirement</span>
-                    </label>
-                    <div class="col-sm-7">
-                        {{annualSalaryGrowth.value}}%
-                        <input class="range-style" type="range" min="0" max="100" id="testRange" value="25" (change)="updateSlider()" #annualSalaryGrowth>
+            </fieldset>
+            <fieldset>
+                <legend class="header-legend" (click)="isSocialSecurityCollapsed = !isSocialSecurityCollapsed">Social Security Benefits</legend>
+                <div [collapse]="isSocialSecurityCollapsed">
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="annualSalary">Social Security Benefits?
+                            <span class="tooltip-text">Social Security Benefits?</span>
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" (change)="toggleSocialSecutiryBenefits(socialSecurityBenefits.checked)" #socialSecurityBenefits>
+                            <div class="slider round"></div>
+                        </label>
                     </div>
+                    <div *ngIf="hasSocialSecurityBenefits">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="header-legend" (click)="is401kCollapsed = !is401kCollapsed">401K Retirement Plan</legend>
+                <div [collapse]="is401kCollapsed">
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="annualSalary">401K?
+                            <span class="tooltip-text">Do you currently participate in a 401k retirement savings plan</span>
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" (change)="toggleFourOOneKPlan(fourOOneKPlan.checked)" #fourOOneKPlan>
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                    <div *ngIf="has401kPlan">
+                        <div class="form-group">
+                            <label class="tooltip-element control-label col-sm-4" for="paycheckPercentageSlider">% of Income: 
+                                <span class="tooltip-text">What Percentage per check do you put in your 401k</span>
+                            </label>
+                            <div class="col-sm-7">
+                                {{paycheckPercentage}}
+                                <input class="range-style" type="range" min="0" max="35" id="paycheckPercentageSlider" value="10" (input)="updatePayckeckPercentage($event.target.value)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="header-legend" (click)="isRetirementCriteriaCollapsed = !isRetirementCriteriaCollapsed">Retirement Criteria</legend>
+                <div [collapse]="isRetirementCriteriaCollapsed">
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="ageOfRetirementSlider">Age of Retirement: 
+                            <span class="tooltip-text">How old would you like to be when you retire</span>
+                        </label>
+                        <div class="col-sm-7">
+                            {{ageOfRetirementValue}}
+                            <input class="range-style" type="range" min="0" max="100" id="ageOfRetirementSlider" value="67" (input)="updateAgeOfRetirement($event.target.value)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="yearsOfRetirementSlider">Years of Retirement: 
+                            <span class="tooltip-text">How many years would you like to spend retired</span>
+                        </label>
+                        <div class="col-sm-7">
+                            {{yearsOfRetirementValue}}
+                            <input class="range-style" type="range" min="0" max="100" id="yearsOfRetirementSlider" value="20" (input)="updateYearsOfRetirement($event.target.value)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="annualSalaryGrowthSlider">Salary Growth: 
+                            <span class="tooltip-text">What is your desired annual salary growth after retirement</span>
+                        </label>
+                        <div class="col-sm-7">
+                            {{annualSalaryGrowthValue}}%
+                            <input class="range-style" type="range" min="0" max="10" id="annualSalaryGrowthSlider" value="2" (input)="updateAnnualSalaryGrowth($event.target.value)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="tooltip-element control-label col-sm-4" for="inflationRateSlider">Inflation rate: 
+                            <span class="tooltip-text">Please enter the Inflation Rate</span>
+                        </label>
+                        <div class="col-sm-7">
+                            {{inflationRateValue}}%
+                            <input class="range-style" type="range" min="0" max="10" id="inflationRateSlider" value="2" (input)="updateInflationRate($event.target.value)" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="header-legend">Reset Form Information</legend>
+                <div class="submit-button">
+                    <button class="btn btn-primary" (click)="resetClicked()" type="reset" style="margin-bottom: 20px;">Reset</button>
                 </div>
             </fieldset>
         </form>
@@ -160,12 +218,23 @@
 <div class="outer-container-right">
     <div *ngIf="currentStep == 2">
         <form class="form-horizontal calculator-box">
-            <fieldset>
-                <legend>Retirement Calculation Results</legend>
-                <div>Given the options you specified, when you retire at age 67 in 2061, you will be able to replace 80% of your final wages. As part of this income you would receive $3,307.70 per month in Social Security benefits.</div>
+            <fieldset> 
+                <legend class="header-legend">Retirement Calculation Results</legend>
+                <div *ngIf="showResults">
+                    <h4>{{name}} Retirement Plan</h4>
+                    <div class="results-summary">You are currently {{age}} and you wish to retire when you retire at age {{ageOfRetirementValue}} in {{yearsUntilRetirement}} years. You are planning on being retired for {{yearsOfRetirementValue}} years.</div>
+                    <div class="results-summary">You currently make ${{income}} per year. Which means you will make ${{totalIncome}} over the course of your career. You have a current retirement savings of ${{currentRetirementSavings}}.</div>
+                    <div class="results-summary">You have other retirement income that includes ${{retirementIncome}} per month, as well as a replacement rate of {{replacementRate}}%.</div>
+                    <div class="saving-plan-results" *ngIf="hasPensionBenefits">Your pension benefits start at age {{agePensionBenefitsStart}}, and you will recieve ${{monthlyPensionIncome}} per month.</div>
+                    <div class="social-security-results" *ngIf="hasSocialSecurityBenefits">As part of this income you would receive $3,307.70 per month in Social Security benefits.</div>
+                    <div class="saving-plan-results" *ngIf="has401kPlan">You currently put ${{paycheckSavingsValue}} per paycheck into your 401k savings plan.</div>
+                </div>
+                <div *ngIf="!showResults">
+                    <h3>You have not filled out enough informaiton for me to calculate results, keep going.</h3>
+                </div>
                 <div class="submit-button">
                     <button class="btn btn-primary" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Go Back</button>
-                    <button class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
+                    <button *ngIf="showResults" class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
                 </div>
             </fieldset>
         </form>
@@ -175,11 +244,12 @@
 <div class="outer-container">
     <div *ngIf="currentStep == 3">
         <form class="form-horizontal calculator-box">
-            <div>You are all done</div>
             <fieldset>
-                <legend>Would you like to update something</legend>
+                <legend class="header-legend">Calculations Completed</legend>
+                <h3 style="margin: 25px"> Overall you will be making an income of $4000 when you retire at the ripe old age of {{ageOfRetirementValue}}.</h3>
                 <div class="submit-button">
                     <button class="btn btn-primary" (click)="updateCurrentStep(2)" style="margin-bottom: 20px;">Go Back</button>
+                    <a class="btn btn-primary" href="mailto:{{email}}?Subject={{emailSubject}}&body={{emailBody}}" target="_top" style="margin-bottom: 20px;">Email Results</a>
                 </div>
             </fieldset>
         </form>

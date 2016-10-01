@@ -10,6 +10,7 @@
         border-radius: 20px;
         padding-top: 20px;
         background-color: white;
+        margin-top: 15px;
 
         .terms-and-conditions {
             text-align: left;
@@ -28,6 +29,11 @@
         border-radius: 20px;
         padding-top: 20px;
         background-color: white;
+        
+        .header-legend {
+            text-align: left;
+            padding-left: 20px;
+        }
 
         .form-group {
             margin: 10px auto 10px auto;
@@ -104,7 +110,6 @@
         .button-container {
             margin-bottom: 10px;
         }
-        
     }
 }
 
@@ -155,6 +160,28 @@
         border-radius: 20px;
         padding-top: 20px;
         background-color: white;
-        height: 400px;
+
+        .header-legend {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .results-summary {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
+
+        .social-security-results {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
+
+        .saving-plan-results {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
     }
 }
