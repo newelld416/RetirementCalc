@@ -76,6 +76,7 @@ export class Calculator {
         this.hasPensionBenefits = false;
         this.hasSocialSecurityBenefits = false;
         this.has401kPlan = false;
+        this.showResults = false;
     }
 
     //Setter and Toggle Methods
@@ -144,6 +145,24 @@ export class Calculator {
         this.has401kPlan = !this.has401kPlan;
         this.paycheckSavingsValue = ((this.income / 26) / 100) * this.paycheckPercentage; 
         this.paycheckSavingsValue = Math.round(this.paycheckSavingsValue*100)/100;
+    };
+
+    expandAll() { 
+        this.isPersonalInfoCollapsed = false;
+        this.isFinancesCollapsed = false;
+        this.isPensionCollapsed = false;
+        this.isSocialSecurityCollapsed = false;
+        this.is401kCollapsed = false;
+        this.isRetirementCriteriaCollapsed = false;
+    };
+
+    collapseAll() { 
+        this.isPersonalInfoCollapsed = true;
+        this.isFinancesCollapsed = true;
+        this.isPensionCollapsed = true;
+        this.isSocialSecurityCollapsed = true;
+        this.is401kCollapsed = true;
+        this.isRetirementCriteriaCollapsed = true;
     };
 
     //Empty Methods

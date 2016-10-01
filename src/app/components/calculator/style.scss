@@ -21,6 +21,11 @@
 
 .outer-container-left {
     width: 44%;
+
+    @media (max-width: 700px) {
+        width: 88%;
+    }
+
     margin-left: 5%;
     margin-top: 15px;
     .calculator-box {
@@ -148,6 +153,10 @@
 
 .outer-container-right {
     width: 44%;
+    @media (max-width: 700px) {
+        display: none;
+    }
+
     margin-right: 5%;
     float: right;
     position: fixed;

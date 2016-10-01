@@ -26,7 +26,7 @@
     <div *ngIf="currentStep == 2">
         <form class="form-horizontal calculator-box">
             <fieldset>
-                <legend class="header-legend arrow-down" (click)="isPersonalInfoCollapsed = !isPersonalInfoCollapsed">Personal Information</legend>
+                <legend class="tooltip-element header-legend" (click)="isPersonalInfoCollapsed = !isPersonalInfoCollapsed">Personal Information</legend>
                 <div [collapse]="isPersonalInfoCollapsed">
                     <div class="form-group">
                         <label class="tooltip-element control-label col-sm-4" for="name">Full Name:
@@ -208,7 +208,10 @@
             <fieldset>
                 <legend class="header-legend">Reset Form Information</legend>
                 <div class="submit-button">
+                    <button class="btn btn-primary" (click)="expandAll()" style="margin-bottom: 20px;">Expand All</button>
+                    <button class="btn btn-primary" (click)="collapseAll()" style="margin-bottom: 20px;">Collapse All</button>
                     <button class="btn btn-primary" (click)="resetClicked()" type="reset" style="margin-bottom: 20px;">Reset</button>
+                    <button *ngIf="showResults" class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
                 </div>
             </fieldset>
         </form>
