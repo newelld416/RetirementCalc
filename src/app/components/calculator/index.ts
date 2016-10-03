@@ -13,13 +13,13 @@ import {Collapse} from './Collapse';
 })
 
 export class Calculator {
+    private currentStep: number;
     private hasPensionBenefits: boolean;
     private hasSocialSecurityBenefits: boolean;
     private has401kPlan: boolean;
     private showResults: boolean;
-    private emailSubject: string = "This is my email Subject";
-    private emailBody: string = "This is my email Body";
-    private currentStep: number;
+    private emailSubject: string = "Retirement Plan Results";
+    private emailBody: string = `Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.`;
 
     name: string;
     email: string;
@@ -85,37 +85,21 @@ export class Calculator {
         this.yearsUntilRetirement = this.ageOfRetirementValue - this.age; 
     }
 
-    updateYearsOfRetirement(value) { 
-        this.yearsOfRetirementValue = value; 
-    }
-
-    updateAnnualSalaryGrowth(value) { 
-        this.annualSalaryGrowthValue = value; 
-    }
-
-    updateInflationRate(value) { 
-        this.inflationRateValue = value; 
-    }
+    updateYearsOfRetirement(value) {  this.yearsOfRetirementValue = value; }
+    updateAnnualSalaryGrowth(value) { this.annualSalaryGrowthValue = value; }
+    updateInflationRate(value) { this.inflationRateValue = value; }
+    updateCurrentRetirementSavings(value) { this.currentRetirementSavings = value; }
+    updateReplacementRate(value) { this.replacementRate = value; }
+    updateRetirementIncome(value) { this.retirementIncome = value; }
+    updateAgePensionStarts(value) { this.agePensionBenefitsStart = value; }
+    togglePensionBenefits() { this.hasPensionBenefits = !this.hasPensionBenefits; }
+    toggleSocialSecutiryBenefits() { this.hasSocialSecurityBenefits = !this.hasSocialSecurityBenefits; }
+    emailResults() {}
+    updateSlider() {}
 
     updateIncome(value) {
         this.income = value;
         this.totalIncome = this.income * this.yearsUntilRetirement;
-    }
-
-    updateCurrentRetirementSavings(value) {
-        this.currentRetirementSavings = value;
-    }
-
-    updateReplacementRate(value) {
-        this.replacementRate = value;
-    }
-
-    updateReplacementRateChange() { 
-        this.isPensionCollapsed = false;
-    }
-
-    updateRetirementIncome(value) {
-        this.retirementIncome = value;
     }
 
     updatePayckeckPercentage(value) { 
@@ -124,21 +108,9 @@ export class Calculator {
         this.paycheckSavingsValue = Math.round(this.paycheckSavingsValue*100)/100;
     }
 
-    updateAgePensionStarts(value) {
-        this.agePensionBenefitsStart = value;
-    }
-
     updateAnnualPensionIncome(value) {
         this.annualPensionIncome = value;
         this.monthlyPensionIncome = Math.round((this.annualPensionIncome / 12)*100)/100; 
-    }
-
-    togglePensionBenefits() { 
-        this.hasPensionBenefits = !this.hasPensionBenefits;
-    }
-
-    toggleSocialSecutiryBenefits() { 
-        this.hasSocialSecurityBenefits = !this.hasSocialSecurityBenefits; 
     }
     
     toggleFourOOneKPlan() { 
@@ -157,17 +129,13 @@ export class Calculator {
     };
 
     collapseAll() { 
-        this.isPersonalInfoCollapsed = true;
+        this.isPersonalInfoCollapsed = false;
         this.isFinancesCollapsed = true;
         this.isPensionCollapsed = true;
         this.isSocialSecurityCollapsed = true;
         this.is401kCollapsed = true;
         this.isRetirementCriteriaCollapsed = true;
     };
-
-    //Empty Methods
-    emailResults() {}
-    updateSlider() {}
 
     private calculateAge(propertyValue) {
         this.birthday = propertyValue;
@@ -176,6 +144,5 @@ export class Calculator {
         this.age = Utilities.getAge(birthDate);
         this.yearsUntilRetirement = this.ageOfRetirementValue - this.age; 
         this.totalIncome = this.income * this.yearsUntilRetirement;
-        this.isFinancesCollapsed = false;
     }
 }
