@@ -205,14 +205,38 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset>
-                <legend class="header-legend">Reset Form Information</legend>
-                <div>
-                    <button class="btn btn-primary hide-button" type="button" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Go Back</button>
-                    <button class="btn btn-primary" (click)="resetClicked()" type="reset" style="margin-bottom: 20px;">Reset</button>
-                    <button  *ngIf="showResults" type="button" class="btn btn-primary hide-button" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
-                </div>
-            </fieldset>
+            <div class="hide-results">
+                <fieldset>
+                    <legend class="header-legend">Reset Form Information</legend>
+                    <div>
+                        <button class="btn btn-primary hide-button" type="button" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Go Back</button>
+                        <button class="btn btn-primary" (click)="resetClicked()" type="reset" style="margin-bottom: 20px;">Reset</button>
+                        <button  *ngIf="showResults" type="button" class="btn btn-primary hide-button" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="show-results">
+                <fieldset>
+                    <legend class="header-legend">Retirement Calculation Results</legend>
+                    <div *ngIf="showResults">
+                        <h4>{{name}} Retirement Plan</h4>
+                        <div class="results-summary">You are currently {{age}} and you wish to retire when you retire at age {{ageOfRetirementValue}} in {{yearsUntilRetirement}} years. You are planning on being retired for {{yearsOfRetirementValue}} years.</div>
+                        <div class="results-summary">You currently make ${{income}} per year. Which means you will make ${{totalIncome}} over the course of your career. You have a current retirement savings of ${{currentRetirementSavings}}.</div>
+                        <div class="results-summary">You have other retirement income that includes ${{retirementIncome}} per month, as well as a replacement rate of {{replacementRate}}%.</div>
+                        <div class="saving-plan-results" *ngIf="hasPensionBenefits">Your pension benefits start at age {{agePensionBenefitsStart}}, and you will recieve ${{monthlyPensionIncome}} per month.</div>
+                        <div class="social-security-results" *ngIf="hasSocialSecurityBenefits">As part of this income you would receive $3,307.70 per month in Social Security benefits.</div>
+                        <div class="saving-plan-results" *ngIf="has401kPlan">You currently put ${{paycheckSavingsValue}} per paycheck into your 401k savings plan.</div>
+                    </div>
+                    <div *ngIf="!showResults">
+                        <h3>You have not filled out enough informaiton for me to calculate results, keep going.</h3>
+                    </div>
+                    <div class="submit-button">
+                        <button class="btn btn-primary" type="button" (click)="updateCurrentStep(1)" style="margin-bottom: 20px;">Go Back</button>
+                        <button class="btn btn-primary" (click)="resetClicked()" type="reset" style="margin-bottom: 20px;">Reset</button>
+                        <button *ngIf="showResults" type="button" class="btn btn-primary" (click)="updateCurrentStep(3)" style="margin-bottom: 20px;">Continue</button>
+                    </div>
+                </fieldset>
+            </div>
         </form>
     </div>
 </div> 

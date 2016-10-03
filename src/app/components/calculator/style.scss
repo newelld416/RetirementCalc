@@ -122,6 +122,38 @@
                 display: none;
             }
         }
+
+        .show-results {
+            display: inline;
+            @media (min-width: 700px) {
+                display: none;
+            }
+        }
+
+        .hide-results {
+            display: none;
+            @media (min-width: 700px) {
+                display: inline;
+            }
+        }
+
+        .results-summary {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
+
+        .social-security-results {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
+
+        .saving-plan-results {
+            margin: 0px 40px 20px 40px;
+            font-size: 1.02em;
+            text-align: left;
+        }
     }
 }
 
